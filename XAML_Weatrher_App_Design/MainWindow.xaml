@@ -6,6 +6,150 @@
         xmlns:local="clr-namespace:XAML_Weatrher_App_Design"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Window.Resources>
+        <SolidColorBrush x:Key="SemiTransparent" Opacity =".5" Color="White"/>
+        <Style TargetType="TextBlock" x:Key="DayName">
+            <Setter Property="Background" Value="{StaticResource SemiTransparent}"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+        <Style TargetType="TextBox" x:Key="Report">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+            <Setter Property ="BorderThickness" Value ="3"/>
+            <Setter Property="BorderBrush" Value="Blue"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Grid.Row" Value="2"/>
+        </Style>
+        <Style TargetType="Image">
+            <Setter Property="Stretch" Value="Fill"/>
+            <Setter Property="Margin" Value="7"/>
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Grid.Row" Value="1"/>
+        </Style>
+        <Style TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="DarkCyan"/>
+            <Setter Property="BorderBrush" Value="Blue"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </Window.Resources>
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text ="My Weather App" HorizontalAlignment="Center" FontSize="35" Background="White"/>
+
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/illustrated_park.jpg"></ImageBrush>
+            </Grid.Background>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Style="{StaticResource DayName}" Grid.Row="0" Grid.Column="0" Text="Sunday"/>
+            <TextBlock Style="{StaticResource DayName}" Grid.Row="0" Grid.Column="1" Text="Monday"/>
+            <TextBlock Style="{StaticResource DayName}" Grid.Row="0" Grid.Column="2" Text="Tuesday"/>
+            <TextBlock Style="{StaticResource DayName}" Grid.Row="0" Grid.Column="3" Text="Wednesday"/>
+            <TextBlock Style="{StaticResource DayName}" Grid.Row="0" Grid.Column="4" Text="Thursday"/>
+            <TextBlock Style="{StaticResource DayName}" Grid.Row="0" Grid.Column="5" Text="Friday"/>
+            <TextBlock Style="{StaticResource DayName}" Grid.Row="0" Grid.Column="6" Text="Saturday"/>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="35"/>
+                <Image Source="Images/fahrenheit.png" Margin="0,20,0,10"/>
+                <Image Source="Images/cloudy.png" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="45"/>
+                <Image Source="Images/fahrenheit.png" Margin="0,20,0,10"/>
+                <Image Source="Images/rain.png" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="45"/>
+                <Image Source="Images/fahrenheit.png" Margin="0,20,0,10"/>
+                <Image Source="Images/heavy_rain.png" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="3">
+                <TextBlock Text="45"/>
+                <Image Source="Images/fahrenheit.png" Margin="0,20,0,10"/>
+                <Image Source="Images/hail.png" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="4">
+                <TextBlock Text="45"/>
+                <Image Source="Images/fahrenheit.png"  Margin="0,20,0,10"/>
+                <Image Source="Images/partly_cloudy.png" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="5">
+                <TextBlock Text="45"/>
+                <Image Source="Images/fahrenheit.png"  Margin="0,20,0,10"/>
+                <Image Source="Images/flooding.png" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="6">
+                <TextBlock Text="75"/>
+                <Image Source="Images/fahrenheit.png"  Margin="0,20,0,10"/>
+                <Image Source="Images/sunny.png" />
+            </StackPanel>
+
+            <TextBox Grid.Column = "0" Style="{StaticResource Report}" Text="A few showers early with overcast skies later in the day. High 61F. Winds light and variable. Chance of rain 30%." BorderBrush="#7777FF"/>
+            <TextBox Grid.Column = "1" Style="{StaticResource Report}" Text="Cloudy skies early, followed by partial clearing. Low 47F. Winds light and variable." BorderBrush="#6666FF"/>
+            <TextBox Grid.Column = "2" Style="{StaticResource Report}" Text="A few showers early with overcast skies later in the day. High 61F. Winds light and variable. Chance of rain 30%." BorderBrush="#5555FF"/>
+            <TextBox Grid.Column = "3" Style="{StaticResource Report}" Text="A few showers early with overcast skies later in the day. High 61F. Winds light and variable. Chance of rain 30%." BorderBrush="#4444FF"/>
+            <TextBox Grid.Column = "4" Style="{StaticResource Report}" Text="A few showers early with overcast skies later in the day. High 61F. Winds light and variable. Chance of rain 30%." BorderBrush="#3333FF"/>
+            <TextBox Grid.Column = "5" Style="{StaticResource Report}" Text="A few showers early with overcast skies later in the day. High 61F. Winds light and variable. Chance of rain 30%." BorderBrush="#2222FF"/>
+            <TextBox Grid.Column = "6" Style="{StaticResource Report}" Text="A few showers early with overcast skies later in the day. High 61F. Winds light and variable. Chance of rain 30%."/>
+
+            <Button Grid.Row="2" Grid.Column="0" Content="Prev 7 Days"/>
+            <Button Grid.Row="2" Grid.Column="6" Content="Next 7 Days"/>
+        </Grid>
     </Grid>
 </Window>
